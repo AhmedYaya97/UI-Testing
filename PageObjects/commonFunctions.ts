@@ -1,11 +1,14 @@
 import {Locator, Page} from "@playwright/test"
 
-export class CommonFunctions {
+class CommonFunctions {
     readonly page: Page
+    
+
 
     constructor(page: Page){
         this.page = page
         
+
 
     }
     async navigateToUrl(url: string){
@@ -14,4 +17,6 @@ export class CommonFunctions {
     async clickOnButtonByName(buttonName: string){
         await this.page.getByRole("button", {name: buttonName, exact: true}).click()
     }
+
 }
+export default CommonFunctions;
