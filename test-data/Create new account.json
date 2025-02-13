@@ -1,0 +1,8 @@
+{
+    "title":"Mrs",
+    "firstName":"testFirstName",
+    "lastName": "testLastName",
+    "email":"testEmail@gmx.com",
+    "password": "testPassword1234",
+    "birthDate": "01/21/1990"
+}
