@@ -5,6 +5,7 @@ class LoginPage{
     readonly page: Page
     readonly emailInputField: Locator
     readonly passwordInputField: Locator
+    readonly signInBtn: Locator
     readonly forgotPassword: Locator
     readonly createNewAccount: Locator
 
@@ -12,6 +13,7 @@ class LoginPage{
         this.page = page
         this.emailInputField = this.page.locator("#field-email")
         this.passwordInputField = this.page.locator("#field-password")
+        this.signInBtn = this.page.locator("#submit-login")
         this.forgotPassword = this.page.getByLabel("Forgot your password?")
         this.createNewAccount = this.page.locator('a', {hasText: "No account? Create one here"})
 
@@ -22,6 +24,9 @@ class LoginPage{
     }
     async enterPassword(password: string){
         await this.passwordInputField.fill(password)
+    }
+    async clickOnSignInButton(){
+        await this.signInBtn.click()
     }
     async clickOnForgotPassword(){
         await this.forgotPassword.click()
