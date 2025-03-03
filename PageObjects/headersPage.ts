@@ -1,4 +1,4 @@
-import {Page, Locator} from "@playwright/test";
+import {Page, Locator, expect} from "@playwright/test";
 
 class HeadersPage{
     readonly page: Page
@@ -8,6 +8,7 @@ class HeadersPage{
     readonly art: Locator
     readonly signIn: Locator
     readonly cart: Locator
+    readonly signOutBtn: Locator
 
     constructor(page: Page){
         this.page = page
@@ -17,6 +18,7 @@ class HeadersPage{
         this.art = this.page.getByLabel('Art')
         this.signIn = this.page.locator('span', {hasText: 'Sign in'})
         this.cart = this.page.locator('span', {hasText:'Cart'})
+        this.signOutBtn = this.page.getByRole('link', {name: "Sign out", exact: true} )
 
     }
     async clickOnSignInLink(){
@@ -33,10 +35,15 @@ class HeadersPage{
         await this.accessories.hover()
         await this.page.getByLabel(category).click()
     }
-    async clickOnArt(category: string){
+    async clickOnArt(){
         await this.art.click()
     }
-    
+    async VerifyLoggedInUser(firstName: string, lastName: string){
+        expect(await this.page.locator('[class="account"] span').textContent()).toEqual(`${firstName} ${lastName}`)
+    }
+    async clickOnSignOutButton(){
+        await this.signOutBtn.click()
+    }
     
 }
 

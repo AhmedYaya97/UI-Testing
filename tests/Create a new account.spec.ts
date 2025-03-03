@@ -4,7 +4,7 @@ import generalTestData from "../test-data/generalData.json"
 import testData from "../test-data/Create new account.json"
 
 
-test("test pageObjects", async({page})=>{
+test("Create new account", async({page})=>{
     const pageManager = new PageManager(page)
 
     await test.step("1) Open website", async()=>{
